@@ -1,0 +1,25 @@
+.city_input {
+    display: flex;
+}
+
+.city_input__input {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.clocks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.clocks h1 {
+    color: white;
+}
+
+.clock {
+    margin-bottom: 80px;
+}
+
+/* TODO: Style form elements */
