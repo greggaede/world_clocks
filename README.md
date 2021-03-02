@@ -1,1 +1,1 @@
-Hi! Welcome to my World Clocks Web App! To get started, just open index.html in the browser of your choice. That's it! Have fun!
+Hi! Welcome to my World Clocks Web App! To get started, just open index.html in the modern (not IE!) browser of your choice. That's it! Have fun!
