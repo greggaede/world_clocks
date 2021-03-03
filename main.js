@@ -41,7 +41,23 @@ form.addEventListener('submit', (e) => {
 
     const input = form.querySelector('.city_input__input')
 
-    // TODO: Validate for incorrect input
+    let optionFound = false
+
+    // Search for input value among available option
+    datalist.querySelectorAll('option').forEach((option) => {
+        if (option.value === input.value || option.dataset.value === input.value) {
+            optionFound = true
+        }
+    })
+
+    // If input value was not found in options, display message and mark field as invalid
+    if (!optionFound) {
+        input.classList.add('city_input__input--invalid')
+        alert('Timezone not found!')
+        return false
+    } else {
+        input.classList.remove('city_input__input--invalid')
+    }
 
     if (spinner) {
         spinner.classList.add('visible')
@@ -92,5 +108,6 @@ form.addEventListener('submit', (e) => {
                 alert('That clock already exists!')
             }
 
+            form.reset()
         })
 })
