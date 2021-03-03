@@ -1,10 +1,73 @@
 .city_input {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.city_input__label {
+    display: none;
 }
 
 .city_input__input {
-    margin-left: 15px;
-    margin-right: 15px;
+    border: none;
+    border-bottom: 1px solid #bfbfbf;
+    background-color: transparent;
+    font-size: 1.125em;
+    transition: border .4s;
+    height: 60px;
+    width: 210px;
+    outline: none;
+    color: white;
+}
+
+.city_input__input:focus {
+    border-bottom: 1px solid white;
+}
+
+.city_input__input--invalid {
+    border-bottom: 1px solid red;
+}
+
+.city_input__button {
+    margin-top: 20px;
+    width: 210px;
+    position: relative;
+    display: inline-block;
+    padding: 20px 52px;
+    background-color: #329da8;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: bold;
+    z-index: 1;
+    border: none;
+    outline: none;
+    transition: background-color .4s;
+    overflow: hidden;
+}
+
+.city_input__button::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: 110%;
+    width: 30px;
+    height: 200%;
+    background-color: white;
+    transform: rotate(20deg);
+}
+
+.city_input__button:hover {
+    cursor: pointer;
+    background-color: #39b3bf;
+}
+
+.city_input__button:hover::before {
+    right: -50%;
+    transition: all .5s ease;
 }
 
 .clocks {
@@ -21,5 +84,3 @@
 .clock {
     margin-bottom: 80px;
 }
-
-/* TODO: Style form elements */
