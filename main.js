@@ -61,13 +61,16 @@ form.addEventListener('submit', (e) => {
             }
         })
         .then((data) => {
-            console.log(data)
+            const timestamp = Date.now()
+            const userOffset = new Date(timestamp).getTimezoneOffset()*60
+            const localTimestamp = timestamp + (data.raw_offset + data.dst_offset + userOffset)*1000
+            const localDateObject = new Date(localTimestamp)
 
             if (allClocks.length >= 5) {
                 allClocks.shift()
             }
 
-            allClocks.push(getClockMarkup(data.timezone, data.datetime))
+            allClocks.push(getClockMarkup(data.timezone, localDateObject))
 
             clocks.innerHTML = allClocks.join('')
 

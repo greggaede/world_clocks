@@ -4,7 +4,6 @@ const setTime = (clock, left, hand) => {
 }
 
 const getSecondsToday = (time) => {
-    // TODO: Fix issue with always getting my time
     const newDate = new Date(time)
     const today = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate())
     const diff = newDate - today
@@ -17,8 +16,6 @@ const initClocks = () => {
 
     clockElems.forEach((clock) => {
         const currentSec = getSecondsToday(clock.dataset.time)
-
-        console.log(currentSec)
 
         const seconds = (currentSec / 60) % 1
         const minutes = (currentSec / 3600) % 1
