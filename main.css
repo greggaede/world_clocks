@@ -85,14 +85,27 @@
     color: white;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .clocks .clocks__headline span:first-child {
     margin-right: 15px;
 }
 
+.clocks .clocks__headline span {
+    word-wrap : break-word;
+}
+
 .clocks .clocks__timediff {
     color: #329da8;
+}
+
+@media (max-width: 400px) {
+    .clocks .clocks__timediff {
+        font-size: 28px;
+    }
 }
 
 .clock {

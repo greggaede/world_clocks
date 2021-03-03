@@ -37,7 +37,7 @@ const initClocks = () => {
                         const activeClockDate = new Date(clock.dataset.time)
                         const dateDiffSeconds = Math.round((currentClockDate - activeClockDate) / 3600000)
 
-                        timeDifference = `[Time difference: ${dateDiffSeconds} hour(s)]`
+                        timeDifference = `Time difference: ${dateDiffSeconds} hour(s)`
                     }
 
                     _clock.previousElementSibling.querySelector('.clocks__timediff').innerHTML = timeDifference
@@ -49,7 +49,7 @@ const initClocks = () => {
 
 const getClockMarkup = (timezone, time) => {
     return `
-        <h1 class="clocks__headline"><span>${timezone.split('_').join(' ')}</span><span class="clocks__timediff"></span></h1>
+        <h1 class="clocks__headline"><span>${timezone.split('_').join(' ').replace('/', '/&#8203;')}</span><span class="clocks__timediff"></span></h1>
         <div class="clock" data-timezone="${timezone}" data-time="${time}">
             <div class="clock__second"></div>
             <div class="clock__minute"></div>
