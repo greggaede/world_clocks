@@ -24,12 +24,32 @@ const initClocks = () => {
         setTime(clock, 60 * seconds, "second")
         setTime(clock, 3600 * minutes, "minute")
         setTime(clock, 43200 * hours, "hour")
+
+        // If there is more than one clock,
+        // add click event for checking differences between clocks
+        if (clockElems.length > 1) {
+            clock.onclick = () => {
+                clockElems.forEach((_clock) => {
+                    let timeDifference = ''
+
+                    if (_clock !== clock) {
+                        const currentClockDate = new Date(_clock.dataset.time)
+                        const activeClockDate = new Date(clock.dataset.time)
+                        const dateDiffSeconds = Math.round((currentClockDate - activeClockDate) / 3600000)
+
+                        timeDifference = `[Time difference: ${dateDiffSeconds} hour(s)]`
+                    }
+
+                    _clock.previousElementSibling.querySelector('.clocks__timediff').innerHTML = timeDifference
+                })
+            }
+        }
     })
 }
 
 const getClockMarkup = (timezone, time) => {
     return `
-        <h1>${timezone.split('_').join(' ')}</h1>
+        <h1 class="clocks__headline"><span>${timezone.split('_').join(' ')}</span><span class="clocks__timediff"></span></h1>
         <div class="clock" data-timezone="${timezone}" data-time="${time}">
             <div class="clock__second"></div>
             <div class="clock__minute"></div>

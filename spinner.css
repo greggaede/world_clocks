@@ -48,6 +48,7 @@
 	top: 180px;
 	left: 50%;
 	transform: translateX(-50%);
+	z-index: 5;
   }
 
   .spinner.visible {

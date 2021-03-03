@@ -81,10 +81,26 @@
     align-items: center;
 }
 
-.clocks h1 {
+.clocks .clocks__headline {
     color: white;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.clocks .clocks__headline span:first-child {
+    margin-right: 15px;
+}
+
+.clocks .clocks__timediff {
+    color: #329da8;
 }
 
 .clock {
     margin-bottom: 80px;
+    transition: transform .4s;
+}
+
+.clock:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }

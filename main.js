@@ -4,6 +4,7 @@ const spinner = document.querySelector('.spinner')
 const clocks = document.querySelector('.clocks')
 const allClocks = []
 
+// Show spinner before API request
 if (spinner) {
     spinner.classList.add('visible')
 }
@@ -11,6 +12,7 @@ if (spinner) {
 // Get list of options
 fetch(`http://worldtimeapi.org/api/timezone`)
     .then((response) => {
+        // Remove spinner after API request is done
         if (spinner) {
             spinner.classList.remove('visible')
         }
@@ -59,12 +61,15 @@ form.addEventListener('submit', (e) => {
         input.classList.remove('city_input__input--invalid')
     }
 
+    // Show spinner before API request
     if (spinner) {
         spinner.classList.add('visible')
     }
 
+    // Get data for selected timezone
     fetch(`http://worldtimeapi.org/api/timezone/${input.value.split(' ').join('_')}`)
         .then((response) => {
+            // Remove spinner after API request is done
             if (spinner) {
                 spinner.classList.remove('visible')
             }
