@@ -65,15 +65,31 @@ form.addEventListener('submit', (e) => {
             const userOffset = new Date(timestamp).getTimezoneOffset()*60
             const localTimestamp = timestamp + (data.raw_offset + data.dst_offset + userOffset)*1000
             const localDateObject = new Date(localTimestamp)
+            const currentClockElems = clocks.querySelectorAll('.clock')
 
-            if (allClocks.length >= 5) {
-                allClocks.shift()
+            let matchFound = false
+
+            // Look for matching timezones among the currently displayed clocks
+            currentClockElems.forEach((clock) => {
+                if (clock.dataset.timezone === data.timezone) {
+                    matchFound = true
+                }
+            })
+
+            // Only add a new clock if no matching timezone was found
+            if (!matchFound) {
+                if (allClocks.length >= 5) {
+                    allClocks.shift()
+                }
+
+                allClocks.push(getClockMarkup(data.timezone, localDateObject))
+
+                clocks.innerHTML = allClocks.join('')
+
+                initClocks()
+            } else {
+                // Display message that the clock already exists
             }
 
-            allClocks.push(getClockMarkup(data.timezone, localDateObject))
-
-            clocks.innerHTML = allClocks.join('')
-
-            initClocks()
         })
 })
