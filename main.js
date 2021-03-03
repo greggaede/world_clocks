@@ -89,6 +89,7 @@ form.addEventListener('submit', (e) => {
                 initClocks()
             } else {
                 // Display message that the clock already exists
+                alert('That clock already exists!')
             }
 
         })
