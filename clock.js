@@ -35,9 +35,13 @@ const initClocks = () => {
                     if (_clock !== clock) {
                         const currentClockDate = new Date(_clock.dataset.time)
                         const activeClockDate = new Date(clock.dataset.time)
-                        const dateDiffSeconds = Math.round((currentClockDate - activeClockDate) / 3600000)
+                        let dateDiffHours = Math.round((currentClockDate - activeClockDate) / 3600000)
 
-                        timeDifference = `Time difference: ${dateDiffSeconds} hour(s)`
+                        if (dateDiffHours > 0) {
+                            dateDiffHours = `+${dateDiffHours}`
+                        }
+
+                        timeDifference = `Time difference: ${dateDiffHours} hour(s)`
                     }
 
                     _clock.previousElementSibling.querySelector('.clocks__timediff').innerHTML = timeDifference
