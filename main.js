@@ -67,11 +67,8 @@ form.addEventListener('submit', (e) => {
 
     // If input value was not found in options, display message and mark field as invalid
     if (!optionFound) {
-        input.classList.add('city_input__input--invalid')
         showError('Timezone not found!')
         return false
-    } else {
-        input.classList.remove('city_input__input--invalid')
     }
 
     // Show spinner before API request
@@ -112,8 +109,6 @@ form.addEventListener('submit', (e) => {
 
             // Only add a new clock if no matching timezone was found
             if (!matchFound) {
-                input.classList.remove('city_input__input--invalid')
-
                 if (allClocks.length >= 5) {
                     allClocks.shift()
                 }
@@ -124,7 +119,6 @@ form.addEventListener('submit', (e) => {
 
                 initClocks()
             } else {
-                input.classList.add('city_input__input--invalid')
                 // Display message that the clock already exists
                 showError('That clock already exists!')
             }

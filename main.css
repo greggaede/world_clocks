@@ -31,10 +31,6 @@
     border-bottom: 1px solid red;
 }
 
-.city_input__input--invalid:focus {
-    border-bottom: 1px solid red;
-}
-
 .city_input__button {
     margin-top: 20px;
     width: 210px;
