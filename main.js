@@ -1,8 +1,9 @@
 const form = document.querySelector('.city_input')
+const input = form.querySelector('.city_input__input')
 const datalist = form.querySelector('#cities')
 const spinner = document.querySelector('.spinner')
 const clocks = document.querySelector('.clocks')
-const error = document.querySelector('.error')
+const error = form.querySelector('.error')
 const allClocks = []
 
 const showError = (message) => {
@@ -53,8 +54,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
 
     removeError()
-
-    const input = form.querySelector('.city_input__input')
 
     let optionFound = false
 
