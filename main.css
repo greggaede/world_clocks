@@ -13,13 +13,14 @@
 .city_input__input {
     border: none;
     border-bottom: 1px solid #bfbfbf;
-    background-color: transparent;
+    background-color: #1b1e23;
     font-size: 1.125em;
     transition: border .4s;
     height: 60px;
     width: 210px;
     outline: none;
     color: white;
+    z-index: 1;
 }
 
 .city_input__input:focus {
@@ -116,4 +117,34 @@
 .clock:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+@keyframes bounce {
+    0%   { transform: translateY(-50px); }
+    10%  { transform: translateY(0); }
+    15%  { transform: translateY(-7px); }
+    25% { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
+.error {
+    box-sizing: border-box;
+    width: 210px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .4s, height .4s, padding .4s;
+    height: 0;
+    padding: 0;
+}
+
+.error.visible {
+    height: 48px;
+    padding: 15px;
+    opacity: 1;
+    animation-duration: 2s;
+    transform-origin: bottom;
+    animation-name: bounce;
+    animation-timing-function: ease;
 }

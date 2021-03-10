@@ -2,7 +2,18 @@ const form = document.querySelector('.city_input')
 const datalist = form.querySelector('#cities')
 const spinner = document.querySelector('.spinner')
 const clocks = document.querySelector('.clocks')
+const error = document.querySelector('.error')
 const allClocks = []
+
+const showError = (message) => {
+    error.innerHTML = message
+    error.classList.add('visible')
+}
+
+const removeError = () => {
+    error.innerHTML = ''
+    error.classList.remove('visible')
+}
 
 // Show spinner before API request
 if (spinner) {
@@ -41,6 +52,8 @@ fetch(`http://worldtimeapi.org/api/timezone`)
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
+    removeError()
+
     const input = form.querySelector('.city_input__input')
 
     let optionFound = false
@@ -55,7 +68,7 @@ form.addEventListener('submit', (e) => {
     // If input value was not found in options, display message and mark field as invalid
     if (!optionFound) {
         input.classList.add('city_input__input--invalid')
-        alert('Timezone not found!')
+        showError('Timezone not found!')
         return false
     } else {
         input.classList.remove('city_input__input--invalid')
@@ -99,6 +112,8 @@ form.addEventListener('submit', (e) => {
 
             // Only add a new clock if no matching timezone was found
             if (!matchFound) {
+                input.classList.remove('city_input__input--invalid')
+
                 if (allClocks.length >= 5) {
                     allClocks.shift()
                 }
@@ -109,8 +124,9 @@ form.addEventListener('submit', (e) => {
 
                 initClocks()
             } else {
+                input.classList.add('city_input__input--invalid')
                 // Display message that the clock already exists
-                alert('That clock already exists!')
+                showError('That clock already exists!')
             }
 
             form.reset()
